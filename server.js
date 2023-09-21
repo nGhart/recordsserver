@@ -42,8 +42,12 @@ app.use(cookieParser());
 //   })
 // );
 
-//DB connection
-connectToDb();
+//deploy
+// //DB connection
+// connectToDb();
+
+//deploy
+mongoose.connect('mongodb+srv://root:<password>@demo.uw7o4th.mongodb.net/demo?retryWrites=true&w=majority')
 
 //routes
 //AUTH
