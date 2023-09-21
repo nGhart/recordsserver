@@ -2,7 +2,7 @@
   "version": 2,
   "routes": [
     {
-      "src": "/check-auth",
+      "src": "/login",
       "methods": ["GET"], // Adjust this to match your specific route method
       "dest": "server.js", // Change to your backend entry file
       "headers": {
