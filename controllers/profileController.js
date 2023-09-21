@@ -50,9 +50,6 @@ const createProfile = async (request, response) => {
     response.json({ profile });
   } catch (error) {
     console.log(error.message);
-    response
-      .sendStatus(400)
-      .json({ error: 'Profile creation failed', details: error.message });
   }
 };
 
