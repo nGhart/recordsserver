@@ -179,24 +179,8 @@ app.use(function (err, req, res, next) {
   if (!err.statusCode) err.statusCode = 500;
   res.status(err.statusCode).send(err.message);
 });
-//new
-app.use(express.static(path.join(__dirname, './frontend/build')));
-
-app.get('*', function (_, res) {
-  res.sendFile(
-    path.join(__dirname, './frontend/build/index.html'),
-    function (err) {
-      if (err) {
-        res.status(500).send(err);
-      }
-    }
-  );
-});
 
 //server start
 app.listen(process.env.PORT, '127.0.0.1', function () {
   console.log('server is listening on ' + process.env.PORT);
 });
-
-//new
-module.exports = app;
