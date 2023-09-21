@@ -25,7 +25,7 @@ const app = express();
 //deploy
 app.use(
   cors({
-    origin: ["https://recordsfrontend.vercel.app/"],
+    origin: ["https://recordsfrontend.vercel.app"],
     methods:["POST","GET"],
     credentials: true,
   })
