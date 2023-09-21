@@ -25,8 +25,8 @@ const app = express();
 //deploy
 app.use(
   cors({
-    origin: ["https://recordsfrontend.vercel.app"],
-    methods:["POST","GET"],
+    origin: 'https://recordsfrontend.vercel.app',
+     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   })
 );
@@ -189,6 +189,8 @@ app.use(function (err, req, res, next) {
 });
 
 //server start
+
+const PORT = process.env.PORT || 3000;
 app.listen(process.env.PORT, '127.0.0.1', function () {
   console.log('server is listening on ' + process.env.PORT);
 });
