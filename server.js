@@ -2,7 +2,6 @@ if (process.env.NODE_ENV != 'production') {
   require('dotenv').config();
 }
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const connectToDb = require('./config/connectToDb');
@@ -23,33 +22,20 @@ const profileController = require('./controllers/profileController');
 const requireAuth = require('./middleware/requireAuth');
 
 const app = express();
-//deploy
-app.use(
-  cors({
-    origin: 'https://recordsfrontend.vercel.app',
-    
-     methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
-    credentials: true,
-  })
-);
 
 //enable express read json so server can read it, set limit for image size
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use(cookieParser());
-// app.use(
-//   cors({
-//     origin: true,
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
 
-//deploy
-// //DB connection
-// connectToDb();
-
-//deploy
-mongoose.connect('mongodb+srv://root:<password>@demo.uw7o4th.mongodb.net/demo?retryWrites=true&w=majority')
+//DB connection
+connectToDb();
 
 //routes
 //AUTH
@@ -195,8 +181,6 @@ app.use(function (err, req, res, next) {
 });
 
 //server start
-
-const PORT = process.env.PORT || 3000;
 app.listen(process.env.PORT, '127.0.0.1', function () {
   console.log('server is listening on ' + process.env.PORT);
 });
