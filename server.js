@@ -22,17 +22,25 @@ const profileController = require('./controllers/profileController');
 const requireAuth = require('./middleware/requireAuth');
 
 const app = express();
+//deploy
+app.use(
+  cors({
+    origin: ["https://recordsfrontend.vercel.app/"],
+    methods:["POST","GET"],
+    credentials: true,
+  })
+);
 
 //enable express read json so server can read it, set limit for image size
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: true,
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: true,
+//     credentials: true,
+//   })
+// );
 
 //DB connection
 connectToDb();
