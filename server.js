@@ -45,6 +45,7 @@ connectToDb();
 app.post('/signup', userController.signup);
 app.post('/login', userController.login);
 app.get('/logout', userController.logout);
+//deploy
 //app.get('/check-auth', requireAuth, userController.checkAuth);
 
 //ANIMALS
