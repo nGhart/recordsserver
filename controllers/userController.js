@@ -66,5 +66,6 @@ module.exports = {
   signup,
   login,
   logout,
-  checkAuth,
+  //deploy
+  //checkAuth,
 };
