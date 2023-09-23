@@ -1,8 +1,9 @@
-if (process.env.NODE_ENV != 'production') {
-  require('dotenv').config();
-}
+// if (process.env.NODE_ENV != 'production') {
+//   require('dotenv').config();
+// }
 const express = require('express');
 const cors = require('cors');
+const dotenv=require("dotenv");
 const cookieParser = require('cookie-parser');
 const connectToDb = require('./config/connectToDb');
 const animalController = require('./controllers/animalController');
@@ -22,6 +23,7 @@ const profileController = require('./controllers/profileController');
 const requireAuth = require('./middleware/requireAuth');
 
 const app = express();
+dotenv.config();
 
 //enable express read json so server can read it, set limit for image size
 app.use(express.json({ limit: '50mb' }));
