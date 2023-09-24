@@ -30,7 +30,7 @@ async function login(request, response) {
     const token = jwt.sign({ sub: user._id,exp }, "ASEFTHYKLJBGMYTHZ");
     console.log( "token",token);
     //cookie
-    response.json({user})
+    response.json(user)
 //cookie
     
     // response.cookie('Authorization', token, {
