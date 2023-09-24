@@ -6,7 +6,7 @@ async function requireAuth(request, response, next) {
     //read token
     const token = request.cookies.Authorization;
     //decode token
-    const decoded = jwt.verify(token, process.env.SECRET);
+    const decoded = jwt.verify(token, "ASEFTHYKLJBGMYTHZ");
     //make sure token is not expired
     if (Date.now() > decoded.exp) return response.sendStatus(401);
     //find user
