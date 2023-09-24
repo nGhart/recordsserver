@@ -28,14 +28,14 @@ async function login(request, response) {
     const exp = Date.now() + 1000 * 60 * 60 * 24 * 30;
     const token = jwt.sign({ sub: user._id, exp }, process.env.SECRET);
     console.log(token);
-//change
-    // response.cookie('Authorization', token, {
-    //   expires: new Date(exp),
-    //   httpOnly: true,
-    //   sameSite: 'lax',
-    //   //if set to true will only work on secure sites, this lets it work on the local host when we are developing
-    //   secure: process.env.NODE_ENV === 'production',
-    // });
+//cookie
+    response.cookie('Authorization', token, {
+      expires: new Date(exp),
+      //httpOnly: true,
+      sameSite: 'lax',
+      //if set to true will only work on secure sites, this lets it work on the local host when we are developing
+      secure: process.env.NODE_ENV === 'production',
+    });
     response.sendStatus(200);
     console.log('hi', response);
   } catch (error) {
