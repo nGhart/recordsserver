@@ -6,7 +6,7 @@ async function requireAuth(request, response, next) {
     //read token
     const token = request.cookies.Authorization;
     if(token){
-      jwt.verify(token,"ASEFTHYKLJBGMYTHZ",(err,decoded)=>{
+      jwt.verify(token,"ASEFTHYKLJBGMYTHZ", async(err,decoded)=>{
         if(err){
           console.log(err)
         }else{
