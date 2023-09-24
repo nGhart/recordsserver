@@ -47,7 +47,7 @@ app.get('/logout', userController.logout);
 app.get('/check-auth', requireAuth, userController.checkAuth);
 
 //ANIMALS
-get all items
+//get all items
 app.get('/animals', requireAuth, animalController.getAllAnimals);
 //get a single item
 app.get('/animals/:id', requireAuth, animalController.getSingleAnimal);
