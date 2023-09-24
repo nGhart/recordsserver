@@ -27,7 +27,7 @@ async function login(request, response) {
     if (!passwordMatch) return response.sendStatus(401);
     const exp = Date.now() + 1000 * 60 * 60 * 24 * 30;
     //tokenchange
-    const token = jwt.sign({ sub: user._id }, process.env.SECRET,exp);
+    const token = jwt.sign({ sub: user._id }, "ASEFTHYKLJBGMYTHZ",exp);
     console.log( "token",token);
 //cookie
     response.cookie('Authorization', token, {
