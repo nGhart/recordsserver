@@ -27,7 +27,7 @@ async function requireAuth(request, response, next) {
 
     //changes
     //decode token
-    change
+    //change
     const decoded = jwt.verify(token,"ASEFTHYKLJBGMYTHZ");
     //make sure token is not expired
     if (Date.now() > decoded.exp) return response.sendStatus(401);
