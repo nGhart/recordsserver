@@ -28,7 +28,7 @@ async function login(request, response) {
     const exp = Date.now() + 1000 * 60 * 60 * 24 * 30;
     //tokenchange
     const token = jwt.sign({ sub: user._id,exp }, "ASEFTHYKLJBGMYTHZ");
-    console.log( "token",token);
+    console.log( "testing token token",token);
     //cookie
     response.json(user)
 //cookie
