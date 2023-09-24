@@ -45,10 +45,10 @@ async function login(request, response) {
 response.cookie('Authorization', token, {
   expires: new Date(exp),
   // Set sameSite to 'none' for development
-  sameSite: process.env.NODE_ENV === 'production' ? 'lax' : 'none',
+  //sameSite: process.env.NODE_ENV === 'production' ? 'lax' : 'none',
   
   // Set secure to true for production (HTTPS)
-  secure: process.env.NODE_ENV === 'production',
+  //secure: process.env.NODE_ENV === 'production',
 });
 
 
