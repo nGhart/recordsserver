@@ -34,7 +34,7 @@ async function login(request, response) {
       //httpOnly: true,
       sameSite: 'lax',
       //if set to true will only work on secure sites, this lets it work on the local host when we are developing
-      secure: process.env.NODE_ENV === 'production',
+      //secure: process.env.NODE_ENV === 'production',
     });
     response.sendStatus(200);
     console.log('hi', response);
