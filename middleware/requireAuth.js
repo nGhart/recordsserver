@@ -19,6 +19,8 @@ async function requireAuth(request, response, next) {
 
     next();
   } catch (error) {
+    
+    console.log('root of the', error);
     return response.sendStatus(401);
   }
 }
