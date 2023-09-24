@@ -21,6 +21,6 @@ async function requireAuth(request, response, next) {
     console.log('root of the', error);
     return response.sendStatus(401);
   }
-}
+
 }
 module.exports = requireAuth;
