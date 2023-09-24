@@ -14,7 +14,7 @@ async function requireAuth(request, response, next) {
           //find user
              const user = await User.findById(decoded.sub);
            //if user not found
-            if (!user) return console.log("user not found);
+            if (!user) return console.log("user not found");
             //if user found
               request.user = user;
           console.log(request.user)
