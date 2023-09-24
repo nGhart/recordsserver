@@ -47,27 +47,16 @@ app.get('/logout', userController.logout);
 app.get('/check-auth', requireAuth, userController.checkAuth);
 
 //ANIMALS
-//get all items
-// app.get('/animals', requireAuth, animalController.getAllAnimals);
-// //get a single item
-// app.get('/animals/:id', requireAuth, animalController.getSingleAnimal);
-// //create an item
-// app.post('/animals', requireAuth, animalController.createAnimal);
-// //edit an item
-// app.put('/animals/:id', requireAuth, animalController.editAnimal);
-// //delete
-// app.delete('/animals/:id', requireAuth, animalController.deleteAnimal);
-
-//change
-app.get('/animals', animalController.getAllAnimals);
+get all items
+app.get('/animals', requireAuth, animalController.getAllAnimals);
 //get a single item
-app.get('/animals/:id', animalController.getSingleAnimal);
+app.get('/animals/:id', requireAuth, animalController.getSingleAnimal);
 //create an item
-app.post('/animals', animalController.createAnimal);
+app.post('/animals', requireAuth, animalController.createAnimal);
 //edit an item
-app.put('/animals/:id', animalController.editAnimal);
+app.put('/animals/:id', requireAuth, animalController.editAnimal);
 //delete
-app.delete('/animals/:id', animalController.deleteAnimal);
+app.delete('/animals/:id', requireAuth, animalController.deleteAnimal);
 
 //TRANSACTIONS
 //get all items
