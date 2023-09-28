@@ -3,10 +3,9 @@ const User = require('../models/user');
 
 async function requireAuth(request, response, next) {
   //read token
-    const token = request.cookies.Authorization;
+  const token = request.cookies.Authorization;
+  //console.log('req token', token);
   try {
-   
-    //console.log('req token', token);
     //decode token
     const decoded = jwt.verify(token, process.env.SECRET);
     //make sure token is not expired
@@ -20,6 +19,7 @@ async function requireAuth(request, response, next) {
 
     next();
   } catch (error) {
+    next();
     return response.sendStatus(401);
   }
 }
