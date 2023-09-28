@@ -6,7 +6,7 @@ async function requireAuth(request, response, next) {
     //read token
     const token = request.cookies.Authorization;
     //decode token
-    const decoded = jwt.verify(token, "ASEFTHYKLJBGMYTHZ");
+    const decoded = jwt.verify(token, process.env.SECRET);
     //make sure token is not expired
     if (Date.now() > decoded.exp) return response.sendStatus(401);
     //find user
@@ -18,9 +18,8 @@ async function requireAuth(request, response, next) {
 
     next();
   } catch (error) {
-    console.log('root of the', error);
+    console.log(error.message);
     return response.sendStatus(401);
   }
-
 }
 module.exports = requireAuth;
