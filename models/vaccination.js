@@ -6,11 +6,11 @@ const vaccinationSchema = new mongoose.Schema({
     required: true,
   },
   date: {
-    type: String,
+    type: Date,
     required: true,
   },
   nextDate: {
-    type: String,
+    type: Number,
     required: true,
   },
 
