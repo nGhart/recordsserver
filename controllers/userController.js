@@ -104,7 +104,7 @@ async function login(request, response) {
 
     response.cookie('Authorization', token, {
       expires: new Date(exp),
-      httpOnly: true,
+      //httpOnly: true,
       sameSite: 'lax',
       //if set to true will only work on secure sites, this lets it work on the local host when we are developing
       secure: process.env.NODE_ENV === 'production',
