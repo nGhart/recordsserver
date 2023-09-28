@@ -44,8 +44,6 @@ app.use(
 
 //DB connection
 connectToDb();
-//DB connection
-connectToDb();
 
 //routes
 //AUTH
@@ -67,23 +65,13 @@ app.put('/animals/:id', requireAuth, animalController.editAnimal);
 app.delete('/animals/:id', requireAuth, animalController.deleteAnimal);
 
 //TRANSACTIONS
-//get all items
 app.get('/transactions', requireAuth, transactionController.getAllTransactions);
-//get a single item
-app.get(
-  '/transactions/:id',
-  requireAuth,
-  transactionController.getSingleTransaction
-);
-//create an item
 app.post('/transactions', requireAuth, transactionController.createTransaction);
-//edit an item
 app.put(
   '/transactions/:id',
   requireAuth,
   transactionController.editTransaction
 );
-//delete
 app.delete(
   '/transactions/:id',
   requireAuth,
@@ -92,27 +80,19 @@ app.delete(
 
 //invoice
 app.get('/invoices', requireAuth, invoiceController.getAllInvoices);
-//get a single item
 app.get('/invoices/:id', requireAuth, invoiceController.getSingleInvoice);
-//create an item
 app.post('/invoices', requireAuth, invoiceController.createInvoice);
-//edit an item
 app.put('/invoices/:id', requireAuth, invoiceController.editInvoice);
-//delete
 app.delete('/invoices/:id', requireAuth, invoiceController.deleteInvoice);
 
 //contact
 app.get('/contacts', requireAuth, contactController.getAllContacts);
-//create an item
 app.post('/contacts', requireAuth, contactController.createContact);
-//edit an item
 app.put('/contacts/:id', requireAuth, contactController.editContact);
-//delete
 app.delete('/contacts/:id', requireAuth, contactController.deleteContact);
 
 //Employee
 app.get('/employees', requireAuth, employeeController.getAllEmployees);
-app.get('/employees/:id', requireAuth, employeeController.getSingleEmployee);
 app.post('/employees', requireAuth, employeeController.createEmployee);
 app.put('/employees/:id', requireAuth, employeeController.editEmployee);
 app.delete('/employees/:id', requireAuth, employeeController.deleteEmployee);
@@ -181,17 +161,6 @@ app.delete(
   vaccinationController.deleteVaccination
 );
 
-//change
-// // app.use((req, res, next) => {
-// //   next(createError(404));
-// // });
-// // app.use(function (err, req, res, next) {
-// //   console.error(err.message);
-// //   if (!err.statusCode) err.statusCode = 500;
-// //   res.status(err.statusCode).send(err.message);
-// // });
-
-//server start
 app.listen(process.env.PORT, function () {
   console.log('server is listening on ' + process.env.PORT);
 });
