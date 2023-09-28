@@ -25,36 +25,21 @@ async function login(request, response) {
     if (!user) return response.sendStatus(401);
     const passwordMatch = bcrypt.compareSync(password, user.password);
     if (!passwordMatch) return response.sendStatus(401);
+
     const exp = Date.now() + 1000 * 60 * 60 * 24 * 30;
-    //tokenchange
-    const token = jwt.sign({ sub: user._id,exp }, "ASEFTHYKLJBGMYTHZ");
-    console.log( "testing token token",token);
-    //cookie
-    response.json(token)
-//cookie
-    
-    // response.cookie('Authorization', token, {
-    //   expires: new Date(exp),
-    //   //httpOnly: true,
+    const token = jwt.sign({ sub: user._id, exp }, process.env.SECRET);
+    //console.log('what token', token);
+    // response.json({user})
 
-    //   //tokenchange
-    //   //sameSite: 'lax',
-    //   //if set to true will only work on secure sites, this lets it work on the local host when we are developing
-    //   //secure: process.env.NODE_ENV === 'production',
-    // });
-response.cookie('Authorization', token, {
-  expires: new Date(exp),
-  // Set sameSite to 'none' for development
-  //sameSite: process.env.NODE_ENV === 'production' ? 'lax' : 'none',
-  
-  // Set secure to true for production (HTTPS)
-  //secure: process.env.NODE_ENV === 'production',
-});
-
-
-    
+    response.cookie('Authorization', token, {
+      expires: new Date(exp),
+      httpOnly: true,
+      sameSite: 'lax',
+      //if set to true will only work on secure sites, this lets it work on the local host when we are developing
+      secure: process.env.NODE_ENV === 'production',
+    });
     response.sendStatus(200);
-    console.log('hi', response);
+    //console.log('hi', response);
   } catch (error) {
     console.log(error.message);
     response.sendStatus(400);
@@ -73,7 +58,7 @@ function logout(request, response) {
 function checkAuth(request, response) {
   try {
     response.sendStatus(200);
-    console.log('look', request.user);
+    //console.log('look', request.user);
   } catch (error) {
     console.log(error.message);
   }
