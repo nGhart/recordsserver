@@ -3,7 +3,7 @@
 // }
 const express = require('express');
 const cors = require('cors');
-const dotenv=require("dotenv");
+const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const connectToDb = require('./config/connectToDb');
 const animalController = require('./controllers/animalController');
@@ -173,7 +173,6 @@ app.delete(
   vaccinationController.deleteVaccination
 );
 
-//change
 // app.use((req, res, next) => {
 //   next(createError(404));
 // });
@@ -184,9 +183,6 @@ app.delete(
 // });
 
 //server start
-// app.listen(process.env.PORT, function () {
-//   console.log('server is listening on ' + process.env.PORT);
-// });
-app.listen(5000, function () {
+app.listen(process.env.PORT, function () {
   console.log('server is listening on ' + process.env.PORT);
 });
