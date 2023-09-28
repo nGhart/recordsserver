@@ -5,6 +5,7 @@ async function requireAuth(request, response, next) {
   try {
     //read token
     const token = request.cookies.Authorization;
+    //console.log('req token', token);
     //decode token
     const decoded = jwt.verify(token, process.env.SECRET);
     //make sure token is not expired
@@ -18,7 +19,6 @@ async function requireAuth(request, response, next) {
 
     next();
   } catch (error) {
-    console.log(error.message);
     return response.sendStatus(401);
   }
 }
